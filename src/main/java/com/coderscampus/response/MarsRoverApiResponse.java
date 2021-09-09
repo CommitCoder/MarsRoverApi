@@ -7,7 +7,6 @@ public class MarsRoverApiResponse {
 
     List<MarsPhoto> photos = new ArrayList<>();
 
-
     public List<MarsPhoto> getPhotos() {
         return photos;
     }

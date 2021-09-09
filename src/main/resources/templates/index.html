@@ -6,10 +6,9 @@
 </head>
 
 <body>
-    <h2>Welcome to Mars web app </h2>
 
-    <div th:text="${name}"> </div>
-    <div th:text="${address}"> </div>
+    <h2>Welcome to Mars web app </h2>
+    <img th:each="photo : ${roverDataKey.photos}" th:src="${photo.imgSrc}"  />
 
 </body>
 
