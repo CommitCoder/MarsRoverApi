@@ -17,16 +17,24 @@
         <h2>Welcome to Mars web app</h2>
 
         <form method="get" action="" id="frmRoverType">
-            <input type="hidden" id="marsApiRoverData" name="marsApiRoverData" value="">
+            <input type="hidden" th:field="${homeDtoKey.marsApiRoverData}">
             <div class="btn-group btn-group-lg" role="group" style="margin: 2em 0em;">
                 <button type="button" class="btn btn-primary" id="marsApiCuriosity">Curiosity</button>
                 <button type="button" class="btn btn-primary" id="marsApiOpportunity">Opportunity</button>
                 <button type="button" class="btn btn-primary" id="marsApiSpirit">Spirit</button>
             </div>
 
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" th:field="${homeDtoKey.defaultCheck1}">
+                <label class="form-check-label" for="defaultCheck1">    <!-- is it really working -->
+                    Default checkbox
+                </label>
+            </div>
+
+
             <div class="mb-3">
                 <label for="marsSol" class="form-label"> Mars Sol (aka Mars Day):</label>
-                <input type="number" class="form-control" id="marsSol" name="marsSol" min="0" value="1">
+                <input class="form-control" type="number" th:field="${homeDtoKey.marsSol}" min="0">
             </div>
 
             <button type="button" class="btn btn-primary btn-lg">Submit</button>

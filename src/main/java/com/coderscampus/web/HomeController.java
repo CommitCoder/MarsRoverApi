@@ -1,5 +1,6 @@
 package com.coderscampus.web;
 
+import com.coderscampus.dto.HomeDto;
 import com.coderscampus.response.MarsRoverApiResponse;
 import com.coderscampus.service.MarRoverApiService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,18 +17,18 @@ public class HomeController {
     private MarRoverApiService marRoverApiService;
 
     @GetMapping("/")
-    public String getHomeView(ModelMap model, @RequestParam(required = false) String marsApiRoverData,
-                              @RequestParam(required = false) Integer marsSol){
-        if(StringUtils.isEmpty(marsApiRoverData)) {
-            marsApiRoverData = "opportunity";
+    public String getHomeView(ModelMap model, HomeDto homeDto){
+        if(StringUtils.isEmpty(homeDto.getMarsApiRoverData())) {
+            homeDto.setMarsApiRoverData("opportunity");
         }
 
-        if(marsSol == null){
-            marsSol = 1;
+        if(homeDto.getMarsSol() == null){
+            homeDto.setMarsSol(1);
         }
 
-        MarsRoverApiResponse roverData = marRoverApiService.getRoverData(marsApiRoverData, marsSol);
+        MarsRoverApiResponse roverData = marRoverApiService.getRoverData(homeDto.getMarsApiRoverData(), homeDto.getMarsSol());
         model.put("roverDataKey", roverData);
+        model.put("homeDtoKey", homeDto); // we want to access homeDto from index.html now
         return "index";
     }
 
