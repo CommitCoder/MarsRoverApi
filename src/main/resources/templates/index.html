@@ -14,14 +14,23 @@
 
     <div class="container">
 
-        <h2>Welcome to Mars web app 2 </h2>
+        <h2>Welcome to Mars web app</h2>
 
+        <form method="get" action="" id="frmRoverType">
+            <input type="hidden" id="marsApiRoverData" name="marsApiRoverData" value="">
+            <div class="btn-group btn-group-lg" role="group" style="margin: 2em 0em;">
+                <button type="button" class="btn btn-primary" id="marsApiCuriosity">Curiosity</button>
+                <button type="button" class="btn btn-primary" id="marsApiOpportunity">Opportunity</button>
+                <button type="button" class="btn btn-primary" id="marsApiSpirit">Spirit</button>
+            </div>
 
-        <div class="btn-group btn-group-lg" role="group" style="margin: 2em 0em;">
-            <button type="button" class="btn btn-primary" id="marsApiCuriosity">Curiosity</button>
-            <button type="button" class="btn btn-primary" id="marsApiOpportunity">Opportunity</button>
-            <button type="button" class="btn btn-primary" id="marsApiSpirit">Spirit</button>
-        </div>
+            <div class="mb-3">
+                <label for="marsSol" class="form-label"> Mars Sol (aka Mars Day):</label>
+                <input type="number" class="form-control" id="marsSol" name="marsSol" min="0" value="1">
+            </div>
+
+            <button type="button" class="btn btn-primary btn-lg">Submit</button>
+        </form>
 
 
         <div th:each = "index : ${#numbers.sequence(0, roverDataKey.photos.size(), 4)}" class="row" style="margin-bottom: 2em">
